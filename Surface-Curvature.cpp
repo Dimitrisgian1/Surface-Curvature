@@ -1,5 +1,6 @@
 #include "SceneMesh3D.h"
 #include <stdlib.h>
+#include <time.h>
 
 // My global mesh
 //Mesh my_mesh;
@@ -159,13 +160,29 @@ void ChooseRandTri(std::vector<vvr::Triangle> &triangles, std::vector<int> &rand
 {
 	for (int i = 0; i < triangles.size() / 10; i++)
 	{
-		srand(i);
+		//srand(i);
 		int rand_index = rand() % triangles.size();
 		rand_tri_indices.push_back(rand_index);
 		//triangles.erase(triangles.begin() + rand_tri_indices[i]);
 	}
 }
 
-//void FixRandTri(std::vector<int> &rand_tri_indices)
-//{
-//
+vec ChooseRandTriVert(vvr::Triangle triangle)
+{
+	std::vector<vec> vert;
+	vert.push_back((triangle).v1());
+	vert.push_back((triangle).v2());
+	vert.push_back((triangle).v3());
+
+	//srand(time(NULL));
+	int rand_vert = rand() % 3;
+	return vert[rand_vert];
+}
+
+void FixRandTri(std::vector<vvr::Triangle> &triangles, std::vector<int> &rand_tri_indices)
+{
+	for (int i : rand_tri_indices)
+	{
+		vec P1 = ChooseRandTriVert(triangles[i]);
+	}
+}
