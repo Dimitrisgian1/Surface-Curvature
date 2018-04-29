@@ -19,6 +19,8 @@
 void FindCenterMass(std::vector<vec> &vertices, vec &cm);
 void FindAABB(std::vector<vec> &vertices, vvr::Box3D &aabb);
 void ChooseRandTri(std::vector<vvr::Triangle> &triangles, std::vector<int> &rand_tri_indices);
+void FixRandTri(std::vector<vvr::Triangle> &triangles, std::vector<int> &rand_tri_indices);
+vec ChooseRandTriVert(vvr::Triangle triangle);
 
 class Mesh3DScene : public vvr::Scene
 {
